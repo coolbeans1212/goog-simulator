@@ -13,11 +13,8 @@ func _process(delta: float) -> void:
 
 func _on_pressed() -> void:
 	print("goog")
-
-
-func _on_button_down() -> void:
-	self.flip_v = true
-	
-
-func _on_button_up() -> void:
-	self.flip_v = false
+	var tween = get_tree().create_tween()
+	var camera: Camera2D = get_node("../../Camera2D")
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.tween_property(camera, "position", Vector2(0, 1400), 2.0)
