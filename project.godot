@@ -54,7 +54,7 @@ enter={
 
 [physics]
 
-2d/default_gravity=1800.0
+2d/default_gravity=1250.0
 
 [rendering]
 

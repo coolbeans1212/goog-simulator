@@ -14,7 +14,6 @@ func _input(event: InputEvent) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 var has_talked = false
-var dialogue = ["Good evening!", "There was once an evil man...", "His name was EVIL GOOG.", "Legend says that he still remains to this day..."]
 
 func freeze(body: Node2D) -> void:
 	body.set_physics_process(false) 
@@ -33,10 +32,10 @@ func _on_body_entered(body: Node2D) -> void:
 		print("goog")
 		$"../Player/Camera2D/speech".visible = true
 		$"../Player/Camera2D/speech/RichTextLabel".visible = true
-		for i in range(0, len(dialogue)):
-			$"../Player/Camera2D/speech/RichTextLabel".text = dialogue[i]
+		for i in range(0, len(get_meta("dialogue"))):
+			$"../Player/Camera2D/speech/RichTextLabel".text = get_meta("dialogue")[i]
 			await interacted
 		$"../Player/Camera2D/speech".visible = false
 		$"../Player/Camera2D/speech/RichTextLabel".visible = false
-		$"NPC_1/speech".visible = false
+		$"NPC/speech".visible = false
 		unfreeze(body)
