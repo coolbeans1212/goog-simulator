@@ -42,13 +42,15 @@ func go_to_level(level) -> void:
 	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file("res://" + level + ".tscn")
 	$"../Camera2D".position = Vector2(0, 0)
-	
 
-func _on_level_button_pressed(button) -> void:
-	print(button.name.left(7))
+func go_to_level_with_style(level) -> void:
 	if await tween_camera_down(999999, 0) == 0:
 		 # black screen :)
 		var boomaudio = $"../boom"
 		boomaudio.play()
-		boomaudio.connect("finished", go_to_level.bind(button.name.left(7)))
+		boomaudio.connect("finished", go_to_level.bind(level))
+
+func _on_level_button_pressed(button) -> void:
+	print(button.name.left(7))
+	go_to_level_with_style(button.name.left(7))
 		

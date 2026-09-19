@@ -10,9 +10,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("enter"):
 		interacted.emit()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-
 var has_talked = false
 
 func freeze(body: Node2D) -> void:
@@ -27,7 +24,7 @@ func unfreeze(body: Node2D) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D and has_talked == false:
-		freeze(body)
+		$"../Player".freeze()
 		has_talked = true
 		print("goog")
 		$"../Player/Camera2D/speech".visible = true
@@ -38,4 +35,4 @@ func _on_body_entered(body: Node2D) -> void:
 		$"../Player/Camera2D/speech".visible = false
 		$"../Player/Camera2D/speech/RichTextLabel".visible = false
 		$"NPC/speech".visible = false
-		unfreeze(body)
+		$"../Player".unfreeze()
