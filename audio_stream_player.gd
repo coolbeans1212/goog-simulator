@@ -1,8 +1,8 @@
 extends AudioStreamPlayer
 
-var audios = ["res://music/Pickup at 10.15.mp3"]
 
 func _ready() -> void:
+	var audios = get_meta("Audios")
 	print("goog")
 	for i in range(0, 99999999):
 		audios.shuffle()

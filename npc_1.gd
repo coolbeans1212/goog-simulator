@@ -36,6 +36,7 @@ func _on_body_entered(body: Node2D) -> void:
 			await interacted
 		$"../Player/Camera2D/speech".visible = false
 		$"../Player/Camera2D/speech/RichTextLabel".visible = false
-		$"NPC/speech".visible = false
+		if get_node_or_null("NPC/speech") != null:
+			$"NPC/speech".visible = false
 		$"../Player/Camera2D".zoom = originalcamerazoom
 		$"../Player".unfreeze()

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ba0m6kevhst3x"
+path="res://.godot/imported/First Friend.mp3-b7994ab3a7260dfcc756a18c24ef8454.mp3str"
+
+[deps]
+
+source_file="res://music/First Friend.mp3"
+dest_files=["res://.godot/imported/First Friend.mp3-b7994ab3a7260dfcc756a18c24ef8454.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

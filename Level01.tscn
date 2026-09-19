@@ -10103,6 +10103,7 @@ texture_normal = ExtResource("14_q3nvu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("10_5dcmk")
+metadata/Audios = ["res://music/Pickup at 10.15.mp3"]
 
 [connection signal="body_entered" from="evening" to="evening" method="_on_body_entered"]
 [connection signal="body_entered" from="noon" to="noon" method="_on_body_entered"]
