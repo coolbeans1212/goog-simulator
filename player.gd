@@ -30,7 +30,10 @@ func is_touching_danger():
 		var collision = get_slide_collision(i)
 		if collision.get_collider() == $"../Danger":
 			print("fsdjsfdjoisfdoisdfo")
-			
+			die()
+func die():
+	print("fsdjsfdjoisfdoisdfo")
+
 func freeze() -> void:
 	self.set_physics_process(false) 
 	self.set_process_input(false)
