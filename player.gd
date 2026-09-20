@@ -33,6 +33,12 @@ func is_touching_danger():
 			die()
 func die():
 	print("fsdjsfdjoisfdoisdfo")
+	
+func win():
+	print("goog win")
+	$"Camera2D".zoom = Vector2(1, 1)
+	$"Camera2D/WinScreen".visible = true
+	self.freeze()
 
 func freeze() -> void:
 	self.set_physics_process(false) 

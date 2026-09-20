@@ -15,10 +15,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
-		print("goog win")
-		$"../Player/Camera2D/WinScreen".visible = true
-		$"../Player".freeze()
-		$"../Player/Camera2D".zoom = Vector2(1, 1)
+		$"../Player".win()
 
 func _on_next_level_pressed() -> void:
 	var current_level = get_tree().current_scene.scene_file_path.get_file().get_basename().right(2)
