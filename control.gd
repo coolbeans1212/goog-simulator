@@ -5,10 +5,18 @@ var tweening := false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for button in self.get_children():
-		button.button_down.connect(_on_button_down.bind(button))
-		button.button_up.connect(_on_button_up.bind(button))
+		if button is TextureButton:
+			button.button_down.connect(_on_button_down.bind(button))
+			button.button_up.connect(_on_button_up.bind(button))
+		if button.name.left(5) == 'Level' and Superglobal.levels_unlocked[int(button.name.left(7).right(2)) - 1] == 0:
+			button.button_down.disconnect(_on_button_down.bind(button))
+			button.button_up.disconnect(_on_button_up.bind(button))
 		if button.name.left(5) == 'Level':
 			button.pressed.connect(_on_level_button_pressed.bind(button))
+	for lock in self.get_children():
+		if lock.name.left(4) == 'Lock':
+			if Superglobal.levels_unlocked[int(lock.name.right(2)) - 1] == 1:
+				lock.visible = false
 
 func _on_button_down(button) -> void:
 	button.flip_v = true
@@ -52,5 +60,8 @@ func go_to_level_with_style(level) -> void:
 
 func _on_level_button_pressed(button) -> void:
 	print(button.name.left(7))
-	go_to_level_with_style(button.name.left(7))
+	var level = button.name.left(7)
+	var levelnum = int(level.right(2))
+	if Superglobal.levels_unlocked[levelnum - 1] == 1:
+		go_to_level_with_style(level)
 		

@@ -19,7 +19,8 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_next_level_pressed() -> void:
 	var current_level = get_tree().current_scene.scene_file_path.get_file().get_basename().right(2)
-	var next_level = str(int(current_level) + 1)
+	current_level = int(current_level)
+	var next_level = str(current_level + 1)
 	if next_level.length() == 1:
 		next_level = "0" + next_level
 	get_tree().change_scene_to_file("res://Level" + next_level + ".tscn")

@@ -245,6 +245,7 @@ const schedule = [
 ]
 
 var yupivewarnedaboutthat = []
+var schedule_i = 0
 
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
@@ -275,7 +276,8 @@ var started_at = Time.get_ticks_msec()
 func _process(delta: float) -> void:
 	var now = Time.get_ticks_msec() - started_at
 	var sometimeinthefuture = now + 500
-	for thingtodo in schedule:
+	while schedule_i < schedule.size():
+		var thingtodo = schedule[schedule_i]
 		if sometimeinthefuture >= thingtodo[0] and thingtodo[1] == "spawn_moving_danger" and thingtodo[0] not in yupivewarnedaboutthat: # there is 1000‰ a better way to do this
 			print("goog")
 			var warning = get_node("Warning Line").duplicate()
@@ -284,7 +286,6 @@ func _process(delta: float) -> void:
 			sleep_then_delete(thingtodo[2][5], warning)
 			yupivewarnedaboutthat.append(thingtodo[0])
 		if now >= thingtodo[0]:
-			schedule.erase(thingtodo)
 			match thingtodo[1]:
 				"dialogue_visible":
 					$"Player/Camera2D/speech".visible = thingtodo[2]
@@ -302,4 +303,7 @@ func _process(delta: float) -> void:
 				"win":
 					$"Player".win()
 				_:
-					print("Invalid argument at ", thingtodo[0] )
+					print("Invalid argument at ", thingtodo[0])
+			schedule_i += 1
+		else:
+			break

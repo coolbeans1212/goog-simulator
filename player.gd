@@ -43,6 +43,9 @@ func die():
 func win():
 	if canwinorlose == true:
 		print("goog win")
+		var current_level = get_tree().current_scene.scene_file_path.get_file().get_basename().right(2)
+		current_level = int(current_level)
+		Superglobal.levels_unlocked[current_level] = 1
 		$"Camera2D".zoom = Vector2(1, 1)
 		$"Camera2D/WinScreen".visible = true
 		self.freeze()
