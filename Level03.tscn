@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://by0amxi8m4u34"]
+[gd_scene load_steps=38 format=4 uid="uid://by0amxi8m4u34"]
 
 [ext_resource type="Texture2D" uid="uid://dk0427iiwf8yo" path="res://TILEMAP.png" id="1_aajhi"]
 [ext_resource type="Texture2D" uid="uid://c5fpvvan8vqp4" path="res://TILEMAP_DECOR.png" id="2_suodu"]
@@ -20,6 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://nuf6bvecxvlx" path="res://next level button.png" id="16_pocnc"]
 [ext_resource type="Texture2D" uid="uid://huxy3l70g4m4" path="res://quit button.png" id="17_mt2f0"]
 [ext_resource type="Script" uid="uid://uvdqj0y21xg2" path="res://audio_stream_player.gd" id="18_ix6hb"]
+[ext_resource type="Texture2D" uid="uid://21lwqllj7bdy" path="res://goog lose.png" id="19_e3801"]
+[ext_resource type="Script" uid="uid://cvbupjrdgahr4" path="res://lose_screen.gd" id="20_u61od"]
+[ext_resource type="Texture2D" uid="uid://blwutu8s852d0" path="res://restart button.png" id="21_08dd1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nqf1g"]
 texture = ExtResource("1_aajhi")
@@ -10852,6 +10855,27 @@ offset_bottom = 175.32825
 texture_normal = ExtResource("16_pocnc")
 
 [node name="quit" type="TextureButton" parent="Player/Camera2D/WinScreen"]
+offset_left = 203.05344
+offset_top = 45.80153
+offset_right = 587.05347
+offset_bottom = 173.80153
+texture_normal = ExtResource("17_mt2f0")
+
+[node name="LoseScreen" type="Sprite2D" parent="Player/Camera2D"]
+visible = false
+z_index = 4096
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("19_e3801")
+script = ExtResource("20_u61od")
+
+[node name="restart" type="TextureButton" parent="Player/Camera2D/LoseScreen"]
+offset_left = -572.5191
+offset_top = 47.328247
+offset_right = -188.5191
+offset_bottom = 175.32825
+texture_normal = ExtResource("21_08dd1")
+
+[node name="quit" type="TextureButton" parent="Player/Camera2D/LoseScreen"]
 offset_left = 203.05344
 offset_top = 45.80153
 offset_right = 587.05347

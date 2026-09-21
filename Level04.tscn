@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://d0t8dysc1i4ds"]
+[gd_scene load_steps=37 format=4 uid="uid://d0t8dysc1i4ds"]
 
 [ext_resource type="Texture2D" uid="uid://dk0427iiwf8yo" path="res://TILEMAP.png" id="1_yp1ki"]
 [ext_resource type="Texture2D" uid="uid://c5fpvvan8vqp4" path="res://TILEMAP_DECOR.png" id="2_cq0kb"]
@@ -17,7 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://c361rgodekxuv" path="res://goog win.png" id="16_p66xi"]
 [ext_resource type="Texture2D" uid="uid://nuf6bvecxvlx" path="res://next level button.png" id="17_8vkxn"]
 [ext_resource type="Texture2D" uid="uid://huxy3l70g4m4" path="res://quit button.png" id="18_dw60g"]
+[ext_resource type="Texture2D" uid="uid://21lwqllj7bdy" path="res://goog lose.png" id="18_iai5q"]
+[ext_resource type="Script" uid="uid://cvbupjrdgahr4" path="res://lose_screen.gd" id="19_ph4wc"]
 [ext_resource type="Script" uid="uid://uvdqj0y21xg2" path="res://audio_stream_player.gd" id="19_pl7yf"]
+[ext_resource type="Texture2D" uid="uid://blwutu8s852d0" path="res://restart button.png" id="20_qt2y7"]
 [ext_resource type="Script" uid="uid://c1yadqatalrhl" path="res://modify_camera_once.gd" id="20_rxbvy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nqf1g"]
@@ -7636,7 +7639,7 @@ texture = ExtResource("2_cq0kb")
 [sub_resource type="TileSet" id="TileSet_1w2nl"]
 sources/1 = SubResource("TileSetAtlasSource_my2f2")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4afnr"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uispp"]
 texture = ExtResource("1_yp1ki")
 0:0/0 = 0
 1:0/0 = 0
@@ -10549,7 +10552,7 @@ texture = ExtResource("1_yp1ki")
 
 [sub_resource type="TileSet" id="TileSet_opybl"]
 physics_layer_0/collision_layer = 1
-sources/2 = SubResource("TileSetAtlasSource_4afnr")
+sources/2 = SubResource("TileSetAtlasSource_uispp")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xm8fb"]
 radius = 91.0
@@ -10774,6 +10777,27 @@ offset_bottom = 175.32825
 texture_normal = ExtResource("17_8vkxn")
 
 [node name="quit" type="TextureButton" parent="Player/Camera2D/WinScreen"]
+offset_left = 203.05344
+offset_top = 45.80153
+offset_right = 587.05347
+offset_bottom = 173.80153
+texture_normal = ExtResource("18_dw60g")
+
+[node name="LoseScreen" type="Sprite2D" parent="Player/Camera2D"]
+visible = false
+z_index = 4096
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("18_iai5q")
+script = ExtResource("19_ph4wc")
+
+[node name="restart" type="TextureButton" parent="Player/Camera2D/LoseScreen"]
+offset_left = -572.5191
+offset_top = 47.328247
+offset_right = -188.5191
+offset_bottom = 175.32825
+texture_normal = ExtResource("20_qt2y7")
+
+[node name="quit" type="TextureButton" parent="Player/Camera2D/LoseScreen"]
 offset_left = 203.05344
 offset_top = 45.80153
 offset_right = 587.05347

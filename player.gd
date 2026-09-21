@@ -30,14 +30,23 @@ func is_touching_danger():
 		var collision = get_slide_collision(i)
 		if collision.get_collider() == $"../Danger":
 			die()
+
+var canwinorlose = true
 func die():
-	print("fsdjsfdjoisfdoisdfo")
+	if canwinorlose == true:
+		print("goog lose")
+		$"Camera2D".zoom = Vector2(1, 1)
+		$"Camera2D/LoseScreen".visible = true
+		self.freeze()
+		canwinorlose = false
 	
 func win():
-	print("goog win")
-	$"Camera2D".zoom = Vector2(1, 1)
-	$"Camera2D/WinScreen".visible = true
-	self.freeze()
+	if canwinorlose == true:
+		print("goog win")
+		$"Camera2D".zoom = Vector2(1, 1)
+		$"Camera2D/WinScreen".visible = true
+		self.freeze()
+		canwinorlose = false
 
 func freeze() -> void:
 	self.set_physics_process(false) 
