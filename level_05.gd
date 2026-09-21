@@ -253,10 +253,6 @@ func sleep_then_delete(time: float, obj: Node2D) -> void:
 var warning_visible := false
 var warning_rect: Rect2
 
-func warn_bar(x1: float, y1: float, x2: float, y2: float) -> void:
-	warning_rect = Rect2(Vector2(x1, y1), Vector2(x2 - x1, y2 - y1))
-	warning_visible = true
-	queue_redraw()
 
 func _draw() -> void:
 	if warning_visible:
@@ -301,12 +297,6 @@ func _process(delta: float) -> void:
 					make_evil_thing(from, to, thingtodo[2][5])
 					if len(thingtodo[2]) == 7 and thingtodo[2][6] is bool and thingtodo[2][6] == true:
 						make_evil_thing(to, from, thingtodo[2][5])
-				"warn_bar":
-					if thingtodo[2] is not bool:
-						warn_bar(thingtodo[2][0], thingtodo[2][1], thingtodo[2][2], thingtodo[2][3])
-					else:
-						warning_visible = false
-						queue_redraw()
 				"change_bg":
 					fade_bg_colour(thingtodo[2][0], thingtodo[2][1], thingtodo[2][2], thingtodo[2][3])
 				"win":
