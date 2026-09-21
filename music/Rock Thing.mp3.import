@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfwtqe1d4ls8r"
+path="res://.godot/imported/Rock Thing.mp3-6caced551e4065cb50f3dd4663b31ff0.mp3str"
+
+[deps]
+
+source_file="res://music/Rock Thing.mp3"
+dest_files=["res://.godot/imported/Rock Thing.mp3-6caced551e4065cb50f3dd4663b31ff0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
