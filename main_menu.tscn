@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dld1kr4clo6q6"]
+[gd_scene load_steps=14 format=4 uid="uid://dld1kr4clo6q6"]
 
 [ext_resource type="Texture2D" uid="uid://dk0427iiwf8yo" path="res://TILEMAP.png" id="1_7vrkn"]
 [ext_resource type="Script" uid="uid://cbs7qlhxkp2wh" path="res://control.gd" id="2_8qtwp"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c6coym0odm76o" path="res://goog3.png" id="5_8qtwp"]
 [ext_resource type="Texture2D" uid="uid://dqewjoajhu4hs" path="res://goog4.png" id="6_dy7ct"]
 [ext_resource type="Texture2D" uid="uid://dynv2cj7e6mam" path="res://goog5.png" id="7_0o4t1"]
+[ext_resource type="Texture2D" uid="uid://dddqydck0r02k" path="res://icon.svg" id="8_0o4t1"]
 [ext_resource type="AudioStream" uid="uid://dqcmp4j1gxobf" path="res://boom.mp3" id="9_0o4t1"]
 [ext_resource type="Texture2D" uid="uid://dlvh07xhumjqw" path="res://goog back.png" id="9_dy7ct"]
 
@@ -6006,6 +6007,14 @@ offset_top = 1398.0
 offset_right = 374.0
 offset_bottom = 1526.0
 texture_normal = ExtResource("7_0o4t1")
+
+[node name="Level06Button" type="TextureButton" parent="Buttons"]
+layout_mode = 0
+offset_left = -83.0
+offset_top = 1595.0
+offset_right = 45.0
+offset_bottom = 1723.0
+texture_normal = ExtResource("8_0o4t1")
 
 [node name="LevelGoBackButton" type="TextureButton" parent="Buttons"]
 layout_mode = 0

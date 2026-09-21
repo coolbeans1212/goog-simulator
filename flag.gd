@@ -33,3 +33,7 @@ func _on_button_down(button) -> void:
 
 func _on_button_up(button) -> void:
 	button.flip_v = false
+
+
+func _on_hide_pressed() -> void:
+	$"../Player/Camera2D/WinScreen".visible = false

@@ -1,6 +1,6 @@
 extends Node2D
 # time (milliseconds), action, params
-var schedule = [
+const schedule = [
 	[2100, "dialogue_visible", true],
 	[2100, "dialogue", "Hehehehehehe..."],
 	[4200, "dialogue", "It is I, EVIL GOOG..."],
