@@ -244,19 +244,15 @@ var schedule = [
 	[90520, "win"]
 ]
 
+var yupivewarnedaboutthat = []
+
+func _ready() -> void:
+	RenderingServer.set_default_clear_color(Color(0.0, 0.0, 0.0, 1.0))
 
 func sleep_then_delete(time: float, obj: Node2D) -> void:
 	await get_tree().create_timer(time).timeout
 	obj.queue_free()
 	return
-
-var warning_visible := false
-var warning_rect: Rect2
-
-
-func _draw() -> void:
-	if warning_visible:
-		draw_rect(warning_rect, Color(1.0, 0.0, 0.0, 0.686))
 
 func fade_bg_colour(from: Color, to: Color, timesec: float, stepsec: float) -> void:
 	print("fading")
@@ -278,7 +274,15 @@ var started_at = Time.get_ticks_msec()
 
 func _process(delta: float) -> void:
 	var now = Time.get_ticks_msec() - started_at
+	var sometimeinthefuture = now + 500
 	for thingtodo in schedule:
+		if sometimeinthefuture >= thingtodo[0] and thingtodo[1] == "spawn_moving_danger" and thingtodo[0] not in yupivewarnedaboutthat: # there is 1000‰ a better way to do this
+			print("goog")
+			var warning = get_node("Warning Line").duplicate()
+			add_child(warning)
+			warning.points = [Vector2(thingtodo[2][1], thingtodo[2][2]), Vector2(thingtodo[2][3], thingtodo[2][4])]
+			sleep_then_delete(thingtodo[2][5], warning)
+			yupivewarnedaboutthat.append(thingtodo[0])
 		if now >= thingtodo[0]:
 			schedule.erase(thingtodo)
 			match thingtodo[1]:
@@ -288,10 +292,6 @@ func _process(delta: float) -> void:
 				"dialogue":
 					$"Player/Camera2D/speech/RichTextLabel".text = thingtodo[2]
 				"spawn_moving_danger":
-					var warning = get_node("Warning Line").duplicate()
-					add_child(warning)
-					warning.points = [Vector2(thingtodo[2][1], thingtodo[2][2]), Vector2(thingtodo[2][3], thingtodo[2][4])]
-					sleep_then_delete(thingtodo[2][5] / 1.5, warning)
 					var from = Vector2(thingtodo[2][1], thingtodo[2][2])
 					var to = Vector2(thingtodo[2][3], thingtodo[2][4])
 					make_evil_thing(from, to, thingtodo[2][5])
